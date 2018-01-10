@@ -1,14 +1,16 @@
 import * as React from "react";
 import * as _ from "lodash";
-import {ISearchLocationResponse} from "../../lib/api/interfaces";
+import {ISearchLocationResult} from "../../lib/api/interfaces";
 import API from "../../lib/api";
+import "./style.less";
+import CityBox from "../../components/CityBox";
 
 interface IProps {
 }
 
 interface IState {
     loading: boolean;
-    results: ISearchLocationResponse[];
+    results: ISearchLocationResult[];
 }
 
 export default class SearchContainer extends React.Component<IProps, IState> {
@@ -24,7 +26,9 @@ export default class SearchContainer extends React.Component<IProps, IState> {
     }
 
     private searchForLocation(e: any) {
-        this.fetchData(e.target.value);
+        if (e.target.value) {
+            this.fetchData(e.target.value);
+        }
     }
 
     private fetchData(value: string) {
@@ -37,22 +41,23 @@ export default class SearchContainer extends React.Component<IProps, IState> {
         }).then((results) => {
             console.log(results);
             this.setState({
-                results,
+                results: results,
                 loading: false,
             })
         });
     }
 
     public render() {
+        console.log(this.state);
         return (
-            <div>
-                <input onChange={this.searchForLocation}/>
-                {this.state.results.map(result => {
-                    <div>
-                        <img src={`https://dummyimage.com/600x400/54855a/879cf0&text=${result.title}`}/>
-                        <h3>{result.title}</h3>
-                    </div>
-                })}
+            <div className={"container middle center column"}>
+                <h1 className={"search-title"}>Search Your Location</h1>
+                <input type="text" placeholder="Berlin" className={"search-input"} onChange={this.searchForLocation}/>
+                <div className={"search-result container middle center space-between"}>
+                    {this.state.results.map(city => (
+                        <CityBox key={city.woeid} city={city}/>
+                    ))}
+                </div>
             </div>
         );
     }

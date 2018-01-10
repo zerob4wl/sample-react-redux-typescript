@@ -2,28 +2,45 @@ import "whatwg-fetch";
 import * as Interfaces from "./interfaces";
 
 export default class API {
-    private baseUrl = "https://www.metaweather.com/api";
+    private baseUrl = "https://cors-anywhere.herokuapp.com/http://www.metaweather.com/api";
 
     constructor() {
 
     }
 
     private getFetchOptions(method?: string): RequestInit {
-        const myHeaders = new Headers();
-        myHeaders.append("Access-Control-Allow-Origin", "myheader");
         const options: RequestInit = {
             method: method || 'GET',
-            headers: myHeaders,
-            mode: 'cors',
+            headers: {
+                Accept: 'application/json',
+            },
             cache: 'default'
         };
 
         return options;
     }
 
-    public searchLocation(params: Interfaces.ISearchLocationRequest): Promise<Interfaces.ISearchLocationResponse[]> {
-        return new Promise<Interfaces.ISearchLocationResponse[]>((resolve) => {
-            return fetch(`${this.baseUrl}/location/search/?query=${params.query}`, this.getFetchOptions());
+    public searchLocation(params: Interfaces.ISearchLocationRequest): Promise<Interfaces.ISearchLocationResult[]> {
+        return new Promise((resolve) => {
+            fetch(`${this.baseUrl}/location/search/?query=${params.query}`, this.getFetchOptions())
+                .then(response => {
+                    return response.json()
+                })
+                .then(json => {
+                    resolve(json as Interfaces.ISearchLocationResult[])
+                });
+        });
+    }
+
+    public getLocation(params: Interfaces.IGetLocationRequest): Promise<Interfaces.IGetLocationResult> {
+        return new Promise((resolve) => {
+            fetch(`${this.baseUrl}/location/${params.woeid}/`, this.getFetchOptions())
+                .then(response => {
+                    return response.json()
+                })
+                .then(json => {
+                    resolve(json as Interfaces.IGetLocationResult)
+                });
         });
     }
 }
