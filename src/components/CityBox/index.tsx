@@ -10,6 +10,7 @@ import {addFavorites, addLocation, removeFavorites, updateLocation} from "../../
 import {RootState} from "../../redux/reducers";
 import * as _ from "lodash";
 import StateIcon from "../StateIcon";
+import {BarLoader, PropagateLoader} from "react-spinners";
 
 interface IProps {
     city: ISearchLocationResult;
@@ -24,6 +25,7 @@ interface IProps {
 interface IState {
     locationInfo?: IGetLocationResult;
     loading: boolean;
+    reload: boolean;
     isFavorite: boolean;
 }
 
@@ -31,6 +33,7 @@ class CityBox extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
+            reload: false,
             loading: false,
             isFavorite: props.favorites.indexOf(props.city.woeid) > -1,
         };
@@ -42,12 +45,13 @@ class CityBox extends React.Component<IProps, IState> {
         this.setState({
             isFavorite: props.favorites.indexOf(props.city.woeid) > -1,
             locationInfo: props.locations.find(l => props.city.woeid === l.woeid),
-        })
+        });
     }
 
     public componentDidMount() {
         const locationInfo = this.getLocationInfoFromLocal(this.props.city.woeid);
         this.setState({
+            reload: locationInfo ? true : false,
             loading: locationInfo ? false : true,
             locationInfo
         });
@@ -63,13 +67,14 @@ class CityBox extends React.Component<IProps, IState> {
                 this.setState({
                     locationInfo: result,
                     loading: false,
-                })
+                    reload: false,
+                });
             });
 
     }
 
     private getLocationInfoFromLocal(woeid: number) {
-        return _.find(this.props.locations, {woeid: woeid})
+        return _.find(this.props.locations, {woeid: woeid});
     }
 
     private toggleFavorites() {
@@ -93,14 +98,24 @@ class CityBox extends React.Component<IProps, IState> {
                     <StateIcon state={this.state.locationInfo.consolidated_weather[0].weather_state_abbr}/>
                 </div>
                 }
+                <div className={"spinner"}>
+                    <BarLoader
+                        color={"#ff6369"}
+                        loading={this.state.loading}
+                    />
+                    <PropagateLoader
+                        color={"#fefcf3"}
+                        loading={this.state.reload}
+                    />
+                </div>
                 <div className={"control"}>
                     <button onClick={this.toggleFavorites}>
-                        {this.state.isFavorite ? 'Remove From Favorites' : 'Add To Favorites'}
+                        {this.state.isFavorite ? "Remove From Favorites" : "Add To Favorites"}
                     </button>
                 </div>
                 <div className={"bg"} style={{backgroundColor: StringToColor(this.props.city.title)}}></div>
             </div>
-        )
+        );
     }
 }
 

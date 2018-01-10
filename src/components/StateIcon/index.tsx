@@ -3,12 +3,12 @@ import {STATE_ABBR} from "../../lib/api/interfaces";
 
 
 interface IProps {
-    state: STATE_ABBR,
-    width?: number,
+    state: STATE_ABBR;
+    width?: number;
 }
 
 interface IState {
-    state: STATE_ABBR,
+    state: STATE_ABBR;
 }
 
 export default class StateIcon extends React.Component<IProps, IState> {
@@ -16,11 +16,11 @@ export default class StateIcon extends React.Component<IProps, IState> {
         super(props);
         this.state = {
             state: props.state,
-        }
+        };
     }
 
     public componentWillReceiveProps(props: IProps) {
-        if (props.state != props.state) {
+        if (props.state !== props.state) {
             this.setState({
                 state: props.state,
             });

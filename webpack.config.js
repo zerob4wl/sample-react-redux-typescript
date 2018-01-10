@@ -1,16 +1,24 @@
-var autoprefixer = require("autoprefixer");
+const autoprefixer = require("autoprefixer");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-var webpack = require("webpack");
-var path = require("path");
+const webpack = require("webpack");
+const path = require("path");
 
 // variables
-var isProduction = process.argv.indexOf("-p") >= 0;
-var sourcePath = path.join(__dirname, "./src");
-var outPath = path.join(__dirname, "./dist");
+const isProduction = process.argv.indexOf("-p") >= 0;
+const sourcePath = path.join(__dirname, "./src");
+const outPath = path.join(__dirname, "./dist");
+
+// set env
+new webpack.DefinePlugin({
+    'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+    }
+})
 
 // plugins
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     context: sourcePath,
@@ -113,6 +121,13 @@ module.exports = {
         publicPath: "/",
     },
     plugins: [
+        new UglifyJsPlugin({
+            test: /\.js($|\?)/i,
+            sourceMap: isProduction,
+            uglifyOptions: {
+                compress: true
+            }
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             filename: "vendor.bundle.js",
             minChunks: Infinity,
@@ -125,7 +140,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: "index.html",
-        }),
+        })
     ],
     resolve: {
         extensions: [".js", ".ts", ".tsx"],

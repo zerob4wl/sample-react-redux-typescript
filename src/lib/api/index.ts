@@ -1,20 +1,20 @@
 import "whatwg-fetch";
 import * as Interfaces from "./interfaces";
 
-export default class API {
+class API {
     private baseUrl = "https://cors-anywhere.herokuapp.com/http://www.metaweather.com/api";
 
     constructor() {
-
+        // empty
     }
 
     private getFetchOptions(method?: string): RequestInit {
         const options: RequestInit = {
-            method: method || 'GET',
+            method: method || "GET",
             headers: {
-                Accept: 'application/json',
+                Accept: "application/json",
             },
-            cache: 'default'
+            cache: "default"
         };
 
         return options;
@@ -24,10 +24,10 @@ export default class API {
         return new Promise((resolve) => {
             fetch(`${this.baseUrl}/location/search/?query=${params.query}`, this.getFetchOptions())
                 .then(response => {
-                    return response.json()
+                    return response.json();
                 })
                 .then(json => {
-                    resolve(json as Interfaces.ISearchLocationResult[])
+                    resolve(json as Interfaces.ISearchLocationResult[]);
                 });
         });
     }
@@ -36,11 +36,13 @@ export default class API {
         return new Promise((resolve) => {
             fetch(`${this.baseUrl}/location/${params.woeid}/`, this.getFetchOptions())
                 .then(response => {
-                    return response.json()
+                    return response.json();
                 })
                 .then(json => {
-                    resolve(json as Interfaces.IGetLocationResult)
+                    resolve(json as Interfaces.IGetLocationResult);
                 });
         });
     }
 }
+
+export default API;
