@@ -63,7 +63,7 @@ export default class SearchContainer extends React.Component<IProps, IState> {
                             loading={this.state.loading}
                         />
                         {this.state.touch && !this.state.loading && this.state.results.length === 0 &&
-                            <h5>There is no result!</h5>
+                        <h5>There is no result!</h5>
                         }
                     </div>
                     {this.state.results.map(city => (

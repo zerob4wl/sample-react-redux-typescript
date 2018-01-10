@@ -103,7 +103,7 @@ class CityBox extends React.Component<IProps, IState> {
                         color={"#ff6369"}
                         loading={this.state.loading}
                     />
-                    <PropagateLoader
+                    <BarLoader
                         color={"#fefcf3"}
                         loading={this.state.reload}
                     />
