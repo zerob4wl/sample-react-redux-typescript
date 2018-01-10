@@ -39,7 +39,7 @@ export interface IConsolidatedWeather {
     predictability: number;
     the_temp: number;
     visibility: number;
-    weather_state_abbr: string;
+    weather_state_abbr: STATE_ABBR;
     weather_state_name: string;
     wind_direction: number;
     wind_direction_compass: string;
@@ -51,4 +51,17 @@ export interface ISource {
     slug: string;
     title: string;
     url: string;
+}
+
+export enum STATE_ABBR {
+    SNOW = "sn",
+    SLEEP = "sl",
+    HAIL = "h",
+    THUNDERSTORM = "t",
+    HEAVY_RAIN = "hr",
+    LIGHT_RAIN = "lr",
+    SHOWERS = "S",
+    HEAVY_CLOIUD = "hc",
+    LIGHT_CLOIUD = "lc",
+    CLEAR = "c"
 }
