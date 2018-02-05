@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --debug --devtool cheap-module-source-map --output-pathinfo --history-api-fallback --hot --inline --progress --colors --port 3000 --host 0.0.0.0",
     "watch": "webpack --progress --watch",
-    "build": "webpack --define process.env.NODE_ENV=\"production\" -p --progress --colors"
+    "build": "webpack --define process.env.NODE_ENV=\"production\" -p --progress --colors",
+    "fast" : "webpack-dev-server -d --history-api-fallback --progress --colors --port 3000 --host 0.0.0.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.0.0-beta.37",
