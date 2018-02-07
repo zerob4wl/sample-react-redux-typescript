@@ -4,14 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --debug --devtool cheap-module-source-map --output-pathinfo --history-api-fallback --hot --inline --progress --colors --port 3000 --host 0.0.0.0",
+    "start": "webpack-dev-server --debug --devtool  source-map  --output-pathinfo --history-api-fallback --hot --inline --progress --colors --port 3000 --host 0.0.0.0",
     "watch": "webpack --progress --watch",
     "build": "webpack --define process.env.NODE_ENV=\"production\" -p --progress --colors",
-    "fast" : "webpack-dev-server -d --history-api-fallback --progress --colors --port 3000 --host 0.0.0.0"
+    "fast": "webpack-dev-server -d --devtool source-map --history-api-fallback --progress --colors --port 3000 --host 0.0.0.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.0.0-beta.37",
     "babili-webpack-plugin": "^0.1.2",
+    "eslint": "^4.17.0",
     "lodash": "^4.17.4",
     "react": "^16.2.0",
     "react-core-loading-spinner": "^1.0.1",
@@ -41,6 +42,9 @@
     "css-loader": "^0.28.8",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
+    "i18next": "^10.3.0",
+    "i18next-po-loader": "^1.0.0",
+    "react-i18next": "^7.3.4",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "postcss-flexbugs-fixes": "^3.2.0",

@@ -58,6 +58,10 @@ module.exports = {
             {test: /\.jpg$/, use: "file-loader"},
         ],
         rules: [
+            {test:
+                 /\.po$/,
+                 loader: 'i18next-po-loader'
+             },
             {
                 enforce: "pre",
                 loader: "tslint-loader",
@@ -121,13 +125,13 @@ module.exports = {
         publicPath: "/",
     },
     plugins: [
-        new UglifyJsPlugin({
-            test: /\.js($|\?)/i,
-            sourceMap: isProduction,
-            uglifyOptions: {
-                compress: true
-            }
-        }),
+        //new UglifyJsPlugin({
+        //    test: /\.js($|\?)/i,
+        //    sourceMap: isProduction,
+        //    uglifyOptions: {
+        //        compress: true
+        //    }
+        //}),
         new webpack.optimize.CommonsChunkPlugin({
             filename: "vendor.bundle.js",
             minChunks: Infinity,

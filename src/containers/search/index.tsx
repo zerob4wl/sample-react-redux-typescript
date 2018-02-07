@@ -5,6 +5,8 @@ import API from "../../lib/api";
 import "./style.less";
 import CityBox from "../../components/CityBox";
 import {CircleLoader, RingLoader} from "react-spinners";
+import { I18n } from 'react-i18next';
+import i18n from "./i18n";
 
 interface IProps {
 }
@@ -16,6 +18,9 @@ interface IState {
 }
 
 export default class SearchContainer extends React.Component<IProps, IState> {
+
+
+
     constructor(props: IProps) {
         super(props);
         this.state = {
@@ -23,10 +28,11 @@ export default class SearchContainer extends React.Component<IProps, IState> {
             loading: false,
             results: [],
         };
-
         this.searchForLocation = this.searchForLocation.bind(this);
         this.fetchData = _.debounce(this.fetchData.bind(this), 1000);
-    }
+
+
+     }
 
     private searchForLocation(e: any) {
         if (e.target.value) {
@@ -53,24 +59,31 @@ export default class SearchContainer extends React.Component<IProps, IState> {
 
     public render() {
         return (
-            <div className={"container middle center column"}>
-                <h1 className={"search-title"}>Search Your Location</h1>
-                <input type="text" placeholder="Berlin" className={"search-input"} onChange={this.searchForLocation}/>
-                <div className={"search-result container middle center space-between"}>
-                    <div className="spinner">
-                        <CircleLoader
-                            color={"#ff6369"}
-                            loading={this.state.loading}
-                        />
-                        {this.state.touch && !this.state.loading && this.state.results.length === 0 &&
-                        <h5>There is no result!</h5>
-                        }
+            <I18n i18n={i18n} >
+              {
+                (t, { i18n }) => (
+                    <div className={"container middle center column"}>
+                        <h1 className={"search-title"}>{t("Search")}</h1>
+                        <input type="text" placeholder="Berlin" className={"search-input"} onChange={this.searchForLocation}/>
+                        <div className={"search-result container middle center space-between"}>
+                            <div className="spinner">
+                                <CircleLoader
+                                    color={"#ff6369"}
+                                    loading={this.state.loading}
+                                />
+                                {this.state.touch && !this.state.loading && this.state.results.length === 0 &&
+                                <h5>There is no result!</h5>
+                                }
+                            </div>
+                            {this.state.results.map(city => (
+                                <CityBox key={city.woeid} city={city}/>
+                            ))}
+                        </div>
                     </div>
-                    {this.state.results.map(city => (
-                        <CityBox key={city.woeid} city={city}/>
-                    ))}
-                </div>
-            </div>
+            )
+            }
+            </I18n>
+
         );
     }
 }
