@@ -61,10 +61,10 @@ export default class SearchContainer extends React.Component<IProps, IState> {
         return (
             <I18n i18n={i18n} >
               {
-                (t, { i18n }) => (
+                (_) => (
                     <div className={"container middle center column"}>
-                        <h1 className={"search-title"}>{t("Search")}</h1>
-                        <input type="text" placeholder="Berlin" className={"search-input"} onChange={this.searchForLocation}/>
+                        <h1 className={"search-title"}>{_("Search")}</h1>
+                        <input type="text" placeholder={_("Berlin")} className={"search-input"} onChange={this.searchForLocation}/>
                         <div className={"search-result container middle center space-between"}>
                             <div className="spinner">
                                 <CircleLoader
@@ -72,7 +72,7 @@ export default class SearchContainer extends React.Component<IProps, IState> {
                                     loading={this.state.loading}
                                 />
                                 {this.state.touch && !this.state.loading && this.state.results.length === 0 &&
-                                <h5>There is no result!</h5>
+                                <h5>{_("There is no result!")}</h5>
                                 }
                             </div>
                             {this.state.results.map(city => (
