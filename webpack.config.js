@@ -1,5 +1,5 @@
 const autoprefixer = require("autoprefixer");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const webpack = require("webpack");
 const path = require("path");
@@ -38,6 +38,7 @@ module.exports = {
             "react-redux",
             "react-router",
             "redux",
+            "lodash",
         ],
     },
     module: {
@@ -54,8 +55,7 @@ module.exports = {
             },
             // static assets
             {test: /\.html$/, use: "html-loader"},
-            {test: /\.png$/, use: "url-loader?limit=10000"},
-            {test: /\.jpg$/, use: "file-loader"},
+            {test: /\.png$/, use: "url-loader?limit=10000"}
         ],
         rules: [
             {test:
@@ -77,6 +77,7 @@ module.exports = {
             //   loader: 'svg-inline-loader'
             // },
             {test: /\.(eot|ttf|woff)$/, loader: "file-loader"},
+            {test: /\.jpg$/, use: "file-loader"},
             {
                 test: /\.less$/,
                 use: [
