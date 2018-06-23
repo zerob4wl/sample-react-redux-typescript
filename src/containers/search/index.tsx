@@ -5,7 +5,7 @@ import API from "../../lib/api";
 import "./style.less";
 import CityBox from "../../components/CityBox";
 import {CircleLoader, RingLoader} from "react-spinners";
-import { I18n } from 'react-i18next';
+import { I18n } from "react-i18next";
 import i18n from "./i18n";
 
 interface IProps {
