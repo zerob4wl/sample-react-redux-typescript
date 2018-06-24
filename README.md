@@ -63,3 +63,9 @@ $ yarn start
 ```
 $ yarn build
 ```
+
+## Test
+
+```
+$ yarn test
+```
