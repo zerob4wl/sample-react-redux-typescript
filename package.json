@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "cypress:open": "cypress open",
     "start": "webpack-dev-server --debug --devtool  source-map  --output-pathinfo --history-api-fallback --hot --inline --progress --colors --port 3000 --host 0.0.0.0",
     "watch": "webpack --progress --watch",
     "build": "webpack --define process.env.NODE_ENV=\"production\" -p --progress --colors",
@@ -47,6 +48,8 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.8",
+    "cypress": "^3.0.1",
+    "cypress-cucumber-preprocessor": "^1.0.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
     "i18next": "^10.3.0",

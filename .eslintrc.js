@@ -9,6 +9,9 @@
 /* eslint sort-keys: ["error", "asc"] */
 
 module.exports = {
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
     rules: {
         "accessor-pairs": "off",
         "array-bracket-newline": "off",
