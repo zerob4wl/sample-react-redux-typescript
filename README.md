@@ -1,4 +1,5 @@
 # Sample Project Based on React, Redux, React-router and Typescript
+[![Build Status](https://travis-ci.org/alireza-mh/sample-react-redux-typescript.svg?branch=master)](https://travis-ci.org/alireza-mh/sample-react-redux-typescript)
 
 This is a sample project and starter based on reactJs, Redux, React-router (v4) and Typescript.
 
