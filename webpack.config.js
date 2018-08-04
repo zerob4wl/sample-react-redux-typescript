@@ -157,4 +157,8 @@ module.exports = {
     devServer: {
         contentBase: './dist'
     },
+    // Fix hot Reload and watch on OSX
+    watchOptions: {
+        poll: 100
+    },
 };
