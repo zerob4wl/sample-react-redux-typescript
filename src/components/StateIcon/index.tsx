@@ -12,24 +12,10 @@ interface IState {
 }
 
 export default class StateIcon extends React.Component<IProps, IState> {
-    constructor(props: IProps) {
-        super(props);
-        this.state = {
-            state: props.state,
-        };
-    }
-
-    public componentWillReceiveProps(props: IProps) {
-        if (props.state !== props.state) {
-            this.setState({
-                state: props.state,
-            });
-        }
-    }
 
     render() {
         return (
-            <img src={`http://www.metaweather.com/static/img/weather/${this.state.state}.svg`}
+            <img src={`http://www.metaweather.com/static/img/weather/${this.props.state}.svg`}
                  style={{width: this.props.width || 32}}/>
         );
     }

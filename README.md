@@ -11,9 +11,11 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 ## project structure
 
     .
+    ├── cypress                              # Cypress E2E testing folders 
     ├── dist                                 # Compiled files (index.html & assets)
     ├── src                                  # Source files (alternatively `lib` or `app`)
-    │   ├── components                       # Global Components           
+    │   ├── components                       # Global Components   
+    |   ├── _test_                           # Test folder (jest)
     │   │   ├── CityBox                      # City card component
     │   │   │   ├── style.less               # component styles
     │   │   │   └── index.tsx                # source of `dashboard` component 
@@ -30,8 +32,8 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
     │   │
     │   ├── lib                              # Libraries and helper classes 
     │   ├── redux                            # Redux store, actions and reducers
-    │   └── theme                            # Main style and Less variables
-    │ 
+    │   ├── theme                            # Main style and Less variables
+    │   └── translation                      # Translations files and utilities
     .
     .
     ├── tsconfig.json

@@ -12,7 +12,9 @@ class API {
         const options: RequestInit = {
             method: method || "GET",
             headers: {
-                Accept: "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Headers": "X-Requested-With",
+                "X-Requested-With": "XMLHttpRequest"
             },
             cache: "default"
         };

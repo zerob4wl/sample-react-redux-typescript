@@ -10,16 +10,17 @@ import {addFavorites, addLocation, removeFavorites, updateLocation} from "../../
 import {RootState} from "../../redux/reducers";
 import * as _ from "lodash";
 import StateIcon from "../StateIcon";
-import {BarLoader, PropagateLoader} from "react-spinners";
+import {BarLoader} from "react-spinners";
 
 interface IProps {
     city: ISearchLocationResult;
-    locations: IGetLocationResult[];
-    addLocation: (location: IGetLocationResult) => void;
-    updateLocation: (location: IGetLocationResult) => void;
-    favorites: number[];
-    addFavorites: (woeid: number) => void;
-    removeFavorites: (woeid: number) => void;
+    locations?: IGetLocationResult[];
+    addLocation?: (location: IGetLocationResult) => void;
+    updateLocation?: (location: IGetLocationResult) => void;
+    favorites?: number[];
+    addFavorites?: (woeid: number) => void;
+    removeFavorites?: (woeid: number) => void;
+    key?: any;
 }
 
 interface IState {
@@ -29,7 +30,8 @@ interface IState {
     isFavorite: boolean;
 }
 
-class CityBox extends React.Component<IProps, IState> {
+@(connect(mapStateToProps, mapDispatchToProps) as any)  // TODO: should fixed after typescript issue resolved
+export default class CityBox extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
@@ -41,11 +43,11 @@ class CityBox extends React.Component<IProps, IState> {
         this.toggleFavorites = this.toggleFavorites.bind(this);
     }
 
-    public componentWillReceiveProps(props: IProps) {
-        this.setState({
+    static getDerivedStateFromProps(props: IProps) {
+        return {
             isFavorite: props.favorites.indexOf(props.city.woeid) > -1,
             locationInfo: props.locations.find(l => props.city.woeid === l.woeid),
-        });
+        };
     }
 
     public componentDidMount() {
@@ -113,7 +115,7 @@ class CityBox extends React.Component<IProps, IState> {
                         {this.state.isFavorite ? "Remove From Favorites" : "Add To Favorites"}
                     </button>
                 </div>
-                <div className={"bg"} style={{backgroundColor: StringToColor(this.props.city.title)}}></div>
+                <div className={"bg"} style={{backgroundColor: StringToColor(this.props.city.title)}}/>
             </div>
         );
     }
@@ -136,4 +138,3 @@ function mapDispatchToProps(dispatch: (fn: any) => void) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CityBox);

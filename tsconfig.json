@@ -2,6 +2,7 @@
   "compilerOptions": {
     "importHelpers": true,
     "noEmitHelpers": true,
+    "experimentalDecorators": true,
     "jsx": "react",
     "lib": [
       "dom",
