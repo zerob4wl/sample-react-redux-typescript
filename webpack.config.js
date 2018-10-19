@@ -1,4 +1,5 @@
 const autoprefixer = require("autoprefixer");
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const webpack = require("webpack");
@@ -133,6 +134,7 @@ module.exports = {
         //        compress: true
         //    }
         //}),
+        new LodashModuleReplacementPlugin,
         new webpack.optimize.CommonsChunkPlugin({
             filename: "vendor.bundle.js",
             minChunks: Infinity,

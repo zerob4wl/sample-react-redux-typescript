@@ -20,8 +20,8 @@ export default class AppContainer extends React.Component<IProps, IState> {
     public render() {
         return (
             <Switch>
-                <Route path={`/search`} component={SearchContainer}/>
-                <Redirect to={"/search"}/>
+                <Route path={"/search"} component={SearchContainer}/>
+                <Redirect to={"/search"} />
             </Switch>
         );
     }
