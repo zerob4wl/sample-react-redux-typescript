@@ -32,28 +32,17 @@ module.exports = {
         },
     },
     entry: {
-        main: ["babel-polyfill", "./index.tsx"],
+        main: ["@babel/polyfill", "./index.tsx"],
         vendor: [
             "react",
             "react-dom",
             "react-redux",
             "react-router",
             "redux",
-            "lodash",
         ],
     },
     module: {
         loaders: [
-            // .ts, .tsx
-            {
-                test: /\.tsx?$/,
-                use: isProduction
-                    ? "ts-loader?module=es6"
-                    : [
-                        "react-hot-loader/webpack",
-                        "ts-loader",
-                    ],
-            },
             // static assets
             {test: /\.html$/, use: "html-loader"},
             {test: /\.png$/, use: "url-loader?limit=10000"}
@@ -63,14 +52,15 @@ module.exports = {
                  /\.po$/,
                  loader: 'i18next-po-loader'
              },
+            // {
+            //     enforce: "pre",
+            //     loader: "tslint-loader",
+            //     test: /\.tsx?$/,
+            // },
             {
-                enforce: "pre",
-                loader: "tslint-loader",
-                test: /\.tsx?$/,
-            },
-            {
-                loader: "react-hot-loader/webpack!ts-loader",
-                test: /\.tsx?$/,
+                loader: "babel-loader",
+                test: /\.(js|ts)x?$/,
+                exclude: /node_modules/,
             },
             {test: /\.svg$/, use: "file-loader"},
             // {
