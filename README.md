@@ -43,6 +43,7 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 
 ## Contains
 
+- [x] [Babel 7](https://babeljs.io)
 - [x] [Typescript](https://www.typescriptlang.org/)
 - [x] [React](https://facebook.github.io/react/)
 - [x] [Redux](https://github.com/reactjs/redux)

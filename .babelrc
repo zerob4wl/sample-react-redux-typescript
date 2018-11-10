@@ -1,5 +1,15 @@
 // .babelrc
 {
-  "presets": [ "react", "es2015", "stage-0"],
-  "plugins": ["emotion"]
+  "presets": [
+    "@babel/react",
+    "@babel/env",
+    "@babel/typescript"
+  ],
+  "plugins": [
+    "emotion",
+    ["@babel/proposal-decorators", { "legacy": true }],
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread",
+    "react-hot-loader/babel"
+  ]
 }
