@@ -19,7 +19,7 @@ new webpack.DefinePlugin({
 
 // plugins
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     context: sourcePath,
@@ -42,12 +42,21 @@ module.exports = {
         ],
     },
     module: {
-        loaders: [
+        rules: [
+            // .ts, .tsx
+            {
+                test: /\.(js|tsx?)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: { babelrc: true, plugins: ['react-hot-loader/babel'] }
+                    },
+                ]
+            },
             // static assets
             {test: /\.html$/, use: "html-loader"},
-            {test: /\.png$/, use: "url-loader?limit=10000"}
-        ],
-        rules: [
+            {test: /\.png$/, use: "url-loader?limit=10000"},
             {test:
                  /\.po$/,
                  loader: 'i18next-po-loader'
@@ -57,11 +66,6 @@ module.exports = {
             //     loader: "tslint-loader",
             //     test: /\.tsx?$/,
             // },
-            {
-                loader: "babel-loader",
-                test: /\.(js|ts)x?$/,
-                exclude: /node_modules/,
-            },
             {test: /\.svg$/, use: "file-loader"},
             // {
             //   test: /\.svg$/,
@@ -105,6 +109,23 @@ module.exports = {
             },
         ],
     },
+    optimization: {
+        splitChunks: {
+            name: true,
+            cacheGroups: {
+                commons: {
+                    chunks: 'initial',
+                    minChunks: 2
+                },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'all',
+                    priority: -10
+                }
+            }
+        },
+        runtimeChunk: true
+    },
     node: {
         // workaround for webpack-dev-server issue
         // https://github.com/webpack/webpack-dev-server/issues/60#issuecomment-103411179
@@ -112,7 +133,8 @@ module.exports = {
         net: "empty",
     },
     output: {
-        filename: "bundle.js",
+        filename: "[name].js",
+        chunkFilename: '[id].[chunkhash].js',
         path: outPath,
         publicPath: "/",
     },
@@ -125,13 +147,8 @@ module.exports = {
         //    }
         //}),
         new LodashModuleReplacementPlugin,
-        new webpack.optimize.CommonsChunkPlugin({
-            filename: "vendor.bundle.js",
-            minChunks: Infinity,
-            name: "vendor",
-        }),
         new webpack.optimize.AggressiveMergingPlugin(),
-        new ExtractTextPlugin({
+        new MiniCssExtractPlugin({
             disable: !isProduction,
             filename: "styles.css",
         }),
