@@ -48,6 +48,7 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 - [x] [React](https://facebook.github.io/react/)
 - [x] [Redux](https://github.com/reactjs/redux)
 - [x] [React Router](https://github.com/ReactTraining/react-router)
+- [x] [i18next](https://react.i18next.com)
 - [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 - [x] [Cypress (E2E Test)](https://github.com/cypress-io/cypress)
 - [x] [Jest](https://github.com/facebook/jest)
