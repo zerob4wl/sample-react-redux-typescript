@@ -19,8 +19,8 @@ function logger() {
  * @returns {Store}
  */
 export default function configureStore(initialState?: RootState): Store<RootState> {
-    const create = window["devToolsExtension"]
-        ? window["devToolsExtension"]()(createStore)
+    const create = window.__REDUX_DEVTOOLS_EXTENSION__
+        ? window.__REDUX_DEVTOOLS_EXTENSION__()(createStore)
         : createStore;
 
     // Add middleware
