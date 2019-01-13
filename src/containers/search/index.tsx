@@ -17,7 +17,7 @@ interface IState {
     touch: boolean;
 }
 
-@withI18n()
+@(withI18n as any)()
 export default class SearchContainer extends React.Component<IProps, IState> {
 
 
