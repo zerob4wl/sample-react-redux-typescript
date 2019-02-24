@@ -56,23 +56,19 @@ module.exports = {
             },
             // static assets
             {test: /\.html$/, use: "html-loader"},
-            {test: /\.png$/, use: "url-loader?limit=10000"},
             {test:
-                 /\.po$/,
-                 loader: 'i18next-po-loader'
-             },
+                    /\.po$/,
+                loader: 'i18next-po-loader'
+            },
             // {
             //     enforce: "pre",
             //     loader: "tslint-loader",
             //     test: /\.tsx?$/,
             // },
-            {test: /\.svg$/, use: "file-loader"},
             // {
             //   test: /\.svg$/,
             //   loader: 'svg-inline-loader'
             // },
-            {test: /\.(eot|ttf|woff)$/, loader: "file-loader"},
-            {test: /\.jpg$/, use: "file-loader"},
             {
                 test: /\.less$/,
                 use: [
@@ -103,9 +99,13 @@ module.exports = {
                 ],
             },
             {
-                test: /\.png$/,
+                test:  /\.(svg|jpe?g|png|eot|ttf|woff2?)$/,
                 exclude: /node_modules/,
-                loader: 'file-loader?name=images/[name].[ext]',
+                loader: 'url-loader',
+                query: {
+                    limit: 10000,
+                    name: 'images/name=images/[name].[ext]'
+                }
             },
         ],
     },
