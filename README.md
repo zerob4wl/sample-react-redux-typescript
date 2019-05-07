@@ -8,7 +8,7 @@ After run this project you can search your location and know about current tempe
 This project use https://metaweather.com/api/ to provide data and for 
 handle `cors` use https://cors-anywhere.herokuapp.com service. 
 
-## project structure
+## Project structure
 
     .
     ├── cypress                              # Cypress E2E testing folders 
@@ -53,6 +53,11 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 - [x] [Cypress (E2E Test)](https://github.com/cypress-io/cypress)
 - [x] [Jest](https://github.com/facebook/jest)
 
+## Use boilerplate
+Download tar.gz file or use follow command to start a new project.
+```
+npx degit zerob4wl/sample-react-redux-typescript myNewProject
+```
 ## Setup
 
 ```
