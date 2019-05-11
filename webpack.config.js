@@ -1,6 +1,4 @@
 const autoprefixer = require("autoprefixer");
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const webpack = require("webpack");
 const path = require("path");
@@ -20,6 +18,9 @@ new webpack.DefinePlugin({
 // plugins
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
 module.exports = {
     context: sourcePath,
@@ -120,6 +121,7 @@ module.exports = {
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'all',
+                    minChunks: 1,
                     priority: -10
                 }
             }
@@ -154,6 +156,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: "index.html",
+            inject: 'head'
+        }),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: 'defer'
         })
     ],
     resolve: {
