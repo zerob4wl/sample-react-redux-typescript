@@ -9,6 +9,7 @@ i18n.init({
       },
       react :
       {
+          useSuspense: false,
           wait : false
       },
       lng: "fa", // 'en' | 'fa'

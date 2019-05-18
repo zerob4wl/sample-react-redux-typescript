@@ -10,7 +10,11 @@
 
 module.exports = {
     "parserOptions": {
-        "ecmaVersion": 6
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "env": {
+        "amd": true
     },
     rules: {
         "accessor-pairs": "off",
@@ -203,7 +207,7 @@ module.exports = {
         "no-unsafe-negation": "error",
         "no-unused-expressions": "off",
         "no-unused-labels": "error",
-        "no-unused-vars": "error",
+        "no-unused-vars": "warn",
         "no-use-before-define": "off",
         "no-useless-call": "off",
         "no-useless-computed-key": "off",
