@@ -3,6 +3,7 @@
     "importHelpers": true,
     "noEmitHelpers": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "lib": [
       "dom",
