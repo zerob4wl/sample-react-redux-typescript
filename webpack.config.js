@@ -19,7 +19,6 @@ new webpack.DefinePlugin({
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
 module.exports = {
@@ -141,13 +140,6 @@ module.exports = {
         publicPath: "/",
     },
     plugins: [
-        //new UglifyJsPlugin({
-        //    test: /\.js($|\?)/i,
-        //    sourceMap: isProduction,
-        //    uglifyOptions: {
-        //        compress: true
-        //    }
-        //}),
         new LodashModuleReplacementPlugin,
         new webpack.optimize.AggressiveMergingPlugin(),
         new MiniCssExtractPlugin({
