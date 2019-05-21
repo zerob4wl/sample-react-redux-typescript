@@ -19,7 +19,8 @@ new webpack.DefinePlugin({
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 module.exports = {
     context: sourcePath,
@@ -140,6 +141,7 @@ module.exports = {
         publicPath: "/",
     },
     plugins: [
+        new HardSourceWebpackPlugin(),
         new LodashModuleReplacementPlugin,
         new webpack.optimize.AggressiveMergingPlugin(),
         new MiniCssExtractPlugin({
