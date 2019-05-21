@@ -8,7 +8,7 @@
     "cypress:open": "cypress open",
     "start": "webpack-dev-server --debug --devtool  source-map  --output-pathinfo --history-api-fallback --hot --inline --progress --colors --port 3000 --host 0.0.0.0",
     "watch": "webpack --progress --watch",
-    "build": "rm -rf dist && webpack --define process.env.NODE_ENV=\"production\" -p --progress --colors",
+    "build": "webpack --define process.env.NODE_ENV=\"production\" -p --progress --colors",
     "fast": "webpack-dev-server -d --devtool source-map --history-api-fallback --progress --colors --port 3000 --host 0.0.0.0"
   },
   "dependencies": {
@@ -51,6 +51,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-lodash": "^3.3.4",
     "babel-polyfill": "^6.26.0",
+    "clean-webpack-plugin": "^2.0.2",
     "css-loader": "^0.28.8",
     "cypress": "^3.0.1",
     "cypress-cucumber-preprocessor": "^1.0.0",
