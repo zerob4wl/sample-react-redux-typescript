@@ -73,7 +73,7 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: [
-                    require.resolve("style-loader"),
+                    isProduction ? MiniCssExtractPlugin.loader : require.resolve("style-loader"),
                     require.resolve("css-loader"),
                     {
                         loader: require.resolve("postcss-loader"),
@@ -136,7 +136,7 @@ module.exports = {
     },
     output: {
         filename: "[name].js",
-        chunkFilename: '[id].[chunkhash].js',
+        chunkFilename: '[name].[chunkhash:4].js',
         path: outPath,
         publicPath: "/",
     },
@@ -146,7 +146,8 @@ module.exports = {
         new webpack.optimize.AggressiveMergingPlugin(),
         new MiniCssExtractPlugin({
             disable: !isProduction,
-            filename: "styles.css",
+            filename: "[name][hash].css",
+            chunkFilename: '[name].[chunkhash:4].css',
         }),
         new HtmlWebpackPlugin({
             template: "index.html",
