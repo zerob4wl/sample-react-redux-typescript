@@ -3,6 +3,8 @@
 
 This is a sample project and starter based on reactJs, Redux, React-router (v4) and Typescript.
 
+see the [Demo](https://zerob4wl.github.io/sample-react-redux-typescripthttps://zerob4wl.github.io/sample-react-redux-typescript).
+
 After run this project you can search your location and know about current temperature.
 
 This project use https://metaweather.com/api/ to provide data and for 
