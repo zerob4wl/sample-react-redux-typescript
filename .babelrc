@@ -10,6 +10,13 @@
     ["@babel/proposal-decorators", { "legacy": true }],
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread",
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    "lodash",
+    ["transform-imports", {
+      "react-router": {
+        "transform": "react-router/${member}",
+        "preventFullImport": true
+      }
+    }]
   ]
 }

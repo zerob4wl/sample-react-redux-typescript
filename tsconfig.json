@@ -3,7 +3,10 @@
     "importHelpers": true,
     "noEmitHelpers": true,
     "experimentalDecorators": true,
+    // we can import module that doesn't have default import - no need for import * as React from 'react
     "allowSyntheticDefaultImports": true,
+    // Help jest to work with allowSyntheticDefaultImports: true config
+    "esModuleInterop": true,
     "jsx": "react",
     "lib": [
       "dom",

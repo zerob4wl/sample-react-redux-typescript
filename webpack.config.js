@@ -5,6 +5,7 @@ const path = require("path");
 
 // variables
 const isProduction = process.argv.indexOf("-p") >= 0;
+const isAnalysis = process.argv.indexOf("-a") >= 0;
 const sourcePath = path.join(__dirname, "./src");
 const outPath = path.join(__dirname, "./dist");
 
@@ -22,6 +23,33 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+// postcss config
+const postcssConfig = {
+    loader: "postcss-loader",
+    options: {
+        ident: "postcss", // https://webpack.js.org/guides/migrating/#complex-options
+        plugins: () => [
+            require("postcss-flexbugs-fixes"),
+            autoprefixer({
+                browsers: [
+                    ">1%",
+                    "last 4 versions",
+                    "Firefox ESR",
+                    "not ie < 9", // React doesn"t support IE8 anyway
+                ],
+                flexbox: "no-2009",
+            }),
+        ],
+    },
+}
+
+// babel config
+const babelLoaderConfig = {
+    loader: 'babel-loader',
+    options: { babelrc: true, plugins: ['react-hot-loader/babel']}
+}
 
 module.exports = {
     context: sourcePath,
@@ -34,7 +62,7 @@ module.exports = {
         },
     },
     entry: {
-        main: ["@babel/polyfill", "./index.tsx"],
+        main: ["@babel/polyfill","react-hot-loader/patch", "./index.tsx"],
         vendor: [
             "react",
             "react-dom",
@@ -45,23 +73,25 @@ module.exports = {
     },
     module: {
         rules: [
+            // .js, .jsx
+            {
+                test: /\.(jsx?)$/,
+                exclude: /node_modules/,
+                use: [babelLoaderConfig]
+            },
             // .ts, .tsx
             {
-                test: /\.(js|tsx?)$/,
+                test: /\.(tsx?)$/,
                 exclude: /node_modules/,
                 use: [
-                    {
-                        loader: 'babel-loader',
-                        options: { babelrc: true, plugins: ['react-hot-loader/babel'] }
-                    },
-                ]
+                     !isProduction && babelLoaderConfig,
+                     "ts-loader"
+
+                ].filter(Boolean)
             },
             // static assets
             {test: /\.html$/, use: "html-loader"},
-            {test:
-                    /\.po$/,
-                loader: 'i18next-po-loader'
-            },
+            {test: /\.po$/, loader: 'i18next-po-loader'},
             // {
             //     enforce: "pre",
             //     loader: "tslint-loader",
@@ -72,31 +102,36 @@ module.exports = {
             //   loader: 'svg-inline-loader'
             // },
             {
-                test: /\.less$/,
+                test: /\.module.less$/,
                 use: [
-                    isProduction ? MiniCssExtractPlugin.loader : require.resolve("style-loader"),
-                    require.resolve("css-loader"),
+                    isProduction ? MiniCssExtractPlugin.loader : "style-loader",
                     {
-                        loader: require.resolve("postcss-loader"),
-                        options: {
-                            ident: "postcss", // https://webpack.js.org/guides/migrating/#complex-options
-                            plugins: () => [
-                                require("postcss-flexbugs-fixes"),
-                                autoprefixer({
-                                    browsers: [
-                                        ">1%",
-                                        "last 4 versions",
-                                        "Firefox ESR",
-                                        "not ie < 9", // React doesn"t support IE8 anyway
-                                    ],
-                                    flexbox: "no-2009",
-                                }),
-                            ],
-                        },
+                        loader: "css-loader", options: {
+                            modules: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                        }
                     },
+                    postcssConfig,
                     {
-                        loader: require.resolve("less-loader"),
-                        options: {},
+                        loader: "less-loader",
+                        options: {
+                            sourceMap: !isProduction
+                        },
+                    }
+                ]
+            },
+            {
+                test: /\.less$/,
+                exclude: /\.module.less$/,
+                use: [
+                    isProduction ? MiniCssExtractPlugin.loader : "style-loader",
+                    "css-loader",
+                    postcssConfig,
+                    {
+                        loader: "less-loader",
+                        options: {
+                            sourceMap: !isProduction
+                        },
                     }
                 ],
             },
@@ -143,6 +178,7 @@ module.exports = {
     },
     plugins: [
         new HardSourceWebpackPlugin(),
+        // This plugin complements babel-plugin-lodash by shrinking its cherry-picked builds even further!
         new LodashModuleReplacementPlugin,
         new CleanWebpackPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
@@ -151,24 +187,27 @@ module.exports = {
             filename: "[name][hash].css",
             chunkFilename: '[name].[chunkhash:4].css',
         }),
+
         new HtmlWebpackPlugin({
-            template: "index.html",
+            template:"index.html",
             inject: 'head'
         }),
         new ScriptExtHtmlWebpackPlugin({
             defaultAttribute: 'defer'
-        })
+        }),
+        new BundleAnalyzerPlugin({analyzerMode: !isAnalysis ? 'disable' : 'server'}),
+        new webpack.HotModuleReplacementPlugin()
     ],
     resolve: {
         extensions: [".js", ".ts", ".tsx"],
+        alias: {
+            src: path.resolve(__dirname, 'src'),
+        },
         // Fix webpack"s default behavior to not load packages with jsnext:main module
         // https://github.com/Microsoft/TypeScript/issues/11677
         mainFields: ["main"],
     },
     target: "web",
-    devServer: {
-        contentBase: './dist'
-    },
     // Fix hot Reload and watch on OSX
     watchOptions: {
         poll: 100

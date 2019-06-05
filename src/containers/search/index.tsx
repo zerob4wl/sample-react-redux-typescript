@@ -1,11 +1,11 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
-import {debounce} from "lodash"
+import {debounce} from "lodash";
 import API from "../../lib/api";
 import "./style.less";
 import CityBox from "../../components/CityBox";
 import {CircleLoader} from "react-spinners";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const SearchContainer = () => {
     const [t, i18n] = useTranslation();
