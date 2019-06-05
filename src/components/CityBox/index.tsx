@@ -8,7 +8,7 @@ import API from "../../lib/api";
 import {connect} from "react-redux";
 import {addFavorites, addLocation, removeFavorites, updateLocation} from "../../redux/geoLocation/actions";
 import {RootState} from "../../redux/reducers";
-import * as _ from "lodash";
+import {find} from "lodash";
 import StateIcon from "../StateIcon";
 import {BarLoader} from "react-spinners";
 
@@ -76,7 +76,7 @@ export default class CityBox extends React.Component<IProps, IState> {
     }
 
     private getLocationInfoFromLocal(woeid: number) {
-        return _.find(this.props.locations, {woeid: woeid});
+        return find(this.props.locations, {woeid: woeid});
     }
 
     private toggleFavorites() {
