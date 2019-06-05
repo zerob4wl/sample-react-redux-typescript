@@ -1,4 +1,5 @@
 import * as React from "react";
+import { hot } from "react-hot-loader/root";
 import {Redirect, Route, Switch} from "react-router";
 
 import SearchContainer from "./search";
@@ -12,7 +13,7 @@ interface IProps {
 interface IState {
 }
 
-export default class AppContainer extends React.Component<IProps, IState> {
+class AppContainer extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
     }
@@ -26,3 +27,4 @@ export default class AppContainer extends React.Component<IProps, IState> {
         );
     }
 }
+export default hot(AppContainer);
