@@ -178,7 +178,7 @@ module.exports = {
     },
     plugins: [
         new HardSourceWebpackPlugin(),
-        // since we use babel-lodash-plugin this webpack plugin is optional
+        // This plugin complements babel-plugin-lodash by shrinking its cherry-picked builds even further!
         new LodashModuleReplacementPlugin,
         new CleanWebpackPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
