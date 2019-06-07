@@ -24,6 +24,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const tsImportPluginFactory = require('ts-import-plugin');
 
 // postcss config
 const postcssConfig = {
@@ -48,7 +49,25 @@ const postcssConfig = {
 // babel config
 const babelLoaderConfig = {
     loader: 'babel-loader',
-    options: { babelrc: true, plugins: ['react-hot-loader/babel']}
+    options: {babelrc: true, plugins: ['react-hot-loader/babel']}
+}
+
+// ts loader Config
+const tsLoaderConfig = {
+    loader: "ts-loader",
+    options: {
+        getCustomTransformers: () => ({
+            before: [tsImportPluginFactory({
+                style: false,
+                libraryName: 'lodash',
+                libraryDirectory: null,
+                camel2DashComponentName: false
+            })]
+        }),
+        compilerOptions: {
+            module: 'es2015'
+        }
+    }
 }
 
 module.exports = {
@@ -62,7 +81,7 @@ module.exports = {
         },
     },
     entry: {
-        main: ["@babel/polyfill","react-hot-loader/patch", "./index.tsx"],
+        main: ["@babel/polyfill", "react-hot-loader/patch", "./index.tsx"],
         vendor: [
             "react",
             "react-dom",
@@ -84,9 +103,8 @@ module.exports = {
                 test: /\.(tsx?)$/,
                 exclude: /node_modules/,
                 use: [
-                     !isProduction && babelLoaderConfig,
-                     "ts-loader"
-
+                    !isProduction && babelLoaderConfig,
+                    tsLoaderConfig
                 ].filter(Boolean)
             },
             // static assets
@@ -136,7 +154,7 @@ module.exports = {
                 ],
             },
             {
-                test:  /\.(svg|jpe?g|png|eot|ttf|woff2?)$/,
+                test: /\.(svg|jpe?g|png|eot|ttf|woff2?)$/,
                 exclude: /node_modules/,
                 loader: 'url-loader',
                 query: {
@@ -189,7 +207,7 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template:"index.html",
+            template: "index.html",
             inject: 'head'
         }),
         new ScriptExtHtmlWebpackPlugin({
