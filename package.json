@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "analysis": "webpack -p -a",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist",
     "test": "jest",
     "cypress:open": "cypress open",
     "start": "webpack-dev-server -d --debug --devtool  source-map  --output-pathinfo --history-api-fallback --progress --colors --port 3000 --host 0.0.0.0",
