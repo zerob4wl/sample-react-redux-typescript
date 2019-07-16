@@ -118,13 +118,18 @@ module.exports = {
                     {
                         loader: "css-loader", options: {
                             modules: true,
-                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                            url: false,
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                            sourceMap: !isProduction
                         }
                     },
                     postcssConfig,
                     {
                         loader: "less-loader",
                         options: {
+                            // https://github.com/webpack-contrib/less-loader/issues/109
+                            // in case font and some css wont resolve
+                            rewriteUrls: "local",
                             sourceMap: !isProduction
                         },
                     }
