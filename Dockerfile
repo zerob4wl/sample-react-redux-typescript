@@ -1,7 +1,6 @@
-FROM alpine:3.7
+FROM node:12.4.0-stretch-slim
 
-RUN apk add nodejs nodejs-npm git yarn && \
-    npx degit zerob4wl/sample-react-redux-typescript develop
+COPY . develop
 
 WORKDIR /develop
 
@@ -9,4 +8,3 @@ RUN yarn install
 CMD yarn start
 
 EXPOSE 3000
-
