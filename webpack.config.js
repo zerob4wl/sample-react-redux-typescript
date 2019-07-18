@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const path = require("path");
 
 // variables
+/* global process __dirname module */
 const isProduction = process.argv.indexOf("-p") >= 0;
 const isAnalysis = process.argv.indexOf("-a") >= 0;
 const sourcePath = path.join(__dirname, "./src");
