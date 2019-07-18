@@ -69,6 +69,8 @@ module.exports = {
         contentBase: sourcePath,
         hot: true,
         disableHostCheck: true,
+        // remove anoying WDS of React Hot Loader log
+        clientLogLevel: 'none',
         stats: {
             warnings: false,
         },
