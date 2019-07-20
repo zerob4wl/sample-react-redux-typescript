@@ -10,7 +10,7 @@ import {addFavorites, addLocation, removeFavorites, updateLocation} from "../../
 import {RootState} from "../../redux/reducers";
 import {find} from "lodash";
 import StateIcon from "../StateIcon";
-import {BarLoader} from "react-spinners";
+import BarLoader from "react-spinners/BarLoader";
 
 interface IProps {
     city: ISearchLocationResult;
