@@ -76,7 +76,7 @@ module.exports = {
         },
     },
     entry: {
-        main: ["@babel/polyfill", !isProduction && "react-hot-loader/patch", "./index.tsx"].filter(Boolean),
+        main: [!isProduction && "react-hot-loader/patch", "./index.tsx"].filter(Boolean),
         vendor: [
             "react",
             "react-dom",
