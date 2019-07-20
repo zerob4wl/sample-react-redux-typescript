@@ -2,7 +2,7 @@
 {
   "presets": [
     "@babel/react",
-    "@babel/env",
+    ["@babel/env",{ "useBuiltIns": "usage", "corejs": 3}],
     "@babel/typescript"
   ],
   "plugins": [
@@ -10,6 +10,8 @@
     ["@babel/proposal-decorators", { "legacy": true }],
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread",
+    // in case export default is not defined
+    "@babel/transform-modules-commonjs",
     "lodash",
     ["transform-imports", {
       "react-router": {
