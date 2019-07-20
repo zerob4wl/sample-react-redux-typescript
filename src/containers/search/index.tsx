@@ -4,7 +4,7 @@ import {debounce} from "lodash";
 import API from "../../lib/api";
 import "./style.less";
 import CityBox from "../../components/CityBox";
-import {CircleLoader} from "react-spinners";
+import CircleLoader from "react-spinners/CircleLoader";
 import { useTranslation } from "react-i18next";
 
 const SearchContainer = () => {
