@@ -192,7 +192,7 @@ module.exports = {
         filename: "[name].js",
         chunkFilename: '[name].[chunkhash:4].js',
         path: outPath,
-        publicPath: "/",
+        publicPath: "./",
     },
     plugins: [
         new HardSourceWebpackPlugin(),
