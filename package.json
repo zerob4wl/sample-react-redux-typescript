@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "analysis": "webpack -p -a",
-    "predeploy": "yarn build",
+    "predeploy": "yarn build --ghpages",
     "deploy": "gh-pages -d dist",
     "test": "jest",
     "cypress:open": "cypress open",

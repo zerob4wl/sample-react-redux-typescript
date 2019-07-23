@@ -7,6 +7,7 @@ const path = require("path");
 /* global process __dirname module */
 const isProduction = process.argv.indexOf("-p") >= 0;
 const isAnalysis = process.argv.indexOf("-a") >= 0;
+const isGHPages = process.argv.indexOf("--ghpages") >= 0;
 const sourcePath = path.join(__dirname, "./src");
 const outPath = path.join(__dirname, "./dist");
 
@@ -192,7 +193,7 @@ module.exports = {
         filename: "[name].js",
         chunkFilename: '[name].[chunkhash:4].js',
         path: outPath,
-        publicPath: "./",
+        publicPath: isGHPages ? "./" : "/",
     },
     plugins: [
         new HardSourceWebpackPlugin(),
