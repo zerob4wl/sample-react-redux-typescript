@@ -196,7 +196,7 @@ module.exports = {
         publicPath: isGHPages ? "./" : "/",
     },
     plugins: [
-        new HardSourceWebpackPlugin(),
+       // new HardSourceWebpackPlugin(),
         // since we use babel-lodash-plugin this webpack plugin is optional
         new LodashModuleReplacementPlugin,
         new CleanWebpackPlugin(),
@@ -221,6 +221,8 @@ module.exports = {
         extensions: [".js", ".ts", ".tsx"],
         alias: {
             src: path.resolve(__dirname, 'src'),
+            'react': 'preact/compat',
+            'react-dom': 'preact/compat'
         },
         // Fix webpack"s default behavior to not load packages with jsnext:main module
         // https://github.com/Microsoft/TypeScript/issues/11677
