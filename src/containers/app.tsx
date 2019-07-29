@@ -1,6 +1,6 @@
 import * as React from "react";
 import { hot } from "react-hot-loader/root";
-import {Redirect, Route, Switch} from "react-router";
+import {Redirect, Route, Switch} from "react-router-dom";
 
 import SearchContainer from "./search";
 
