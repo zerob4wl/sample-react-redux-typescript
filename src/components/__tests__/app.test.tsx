@@ -1,14 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import App from "../../containers/app";
-import {Router, Switch, Route} from "react-router";
-import {createBrowserHistory} from "history";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-const history = createBrowserHistory();
 it("renders without crashing", () => {
     const div = document.createElement("div");
     ReactDOM.render(
-    <Router history={history}>
+    <Router>
         <Switch>
             <Route path="/" component={App}/>
         </Switch>
