@@ -8,3 +8,4 @@ dist
 .idea
 .tmp
 .history
+storybook-static
