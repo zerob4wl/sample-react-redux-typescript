@@ -59,7 +59,7 @@ const tsLoaderConfig = {
     loader: "ts-loader",
     options: {
         compilerOptions: {
-            module: 'es2015'
+            module: 'es6'
         }
     }
 }

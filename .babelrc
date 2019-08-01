@@ -9,8 +9,6 @@
     ["@babel/proposal-decorators", { "legacy": true }],
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread",
-    // in case export default is not defined
-    "@babel/transform-modules-commonjs",
     "lodash"
   ]
 }
