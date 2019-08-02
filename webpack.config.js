@@ -51,7 +51,7 @@ const postcssConfig = {
 // babel config
 const babelLoaderConfig = {
     loader: 'babel-loader',
-    options: {babelrc: true, plugins: [!isProduction && 'react-hot-loader/babel'].filter(Boolean)}
+    options: {babelrc: true}
 }
 
 // ts loader Config
@@ -77,7 +77,7 @@ module.exports = {
         },
     },
     entry: {
-        main: [!isProduction && "react-hot-loader/patch", "./index.tsx"].filter(Boolean),
+        main: ["./index.tsx"].filter(Boolean),
         vendor: [
             "react",
             "react-dom",

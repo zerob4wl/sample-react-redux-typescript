@@ -1,5 +1,4 @@
 import * as React from "react";
-import { hot } from "react-hot-loader/root";
 import {Redirect, Route, Switch} from "react-router-dom";
 
 import SearchContainer from "./search";
@@ -27,4 +26,4 @@ class AppContainer extends React.Component<IProps, IState> {
         );
     }
 }
-export default hot(AppContainer);
+export default AppContainer;

@@ -11,12 +11,6 @@
     "@babel/proposal-object-rest-spread",
     // in case export default is not defined
     "@babel/transform-modules-commonjs",
-    "lodash",
-    ["transform-imports", {
-      "react-router": {
-        "transform": "react-router/${member}",
-        "preventFullImport": true
-      }
-    }]
+    "lodash"
   ]
 }
