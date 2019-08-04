@@ -192,7 +192,9 @@ module.exports = {
     plugins: [
         new HardSourceWebpackPlugin(),
         // since we use babel-lodash-plugin this webpack plugin is optional
-        new LodashModuleReplacementPlugin,
+        new LodashModuleReplacementPlugin({
+            shorthands: true
+        }),
         new CleanWebpackPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new MiniCssExtractPlugin({
