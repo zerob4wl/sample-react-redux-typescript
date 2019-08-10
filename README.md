@@ -13,6 +13,7 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 ## Project structure
 
     .
+    ├── .storybook                           # Storybook configuration 
     ├── cypress                              # Cypress E2E testing folders 
     ├── dist                                 # Compiled files (index.html & assets)
     ├── src                                  # Source files (alternatively `lib` or `app`)
@@ -34,6 +35,7 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
     │   │
     │   ├── lib                              # Libraries and helper classes 
     │   ├── redux                            # Redux store, actions and reducers
+    │   ├── stories                          # Stories of component or containers
     │   ├── theme                            # Main style and Less variables
     │   └── translation                      # Translations files and utilities
     .
