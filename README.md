@@ -56,6 +56,7 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 - [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 - [x] [Cypress (E2E Test)](https://github.com/cypress-io/cypress)
 - [x] [Jest](https://github.com/facebook/jest)
+- [x] [Storybook](https://storybook.js.org)
 
 ## Use boilerplate
 Download tar.gz file or use follow command to start a new project.
