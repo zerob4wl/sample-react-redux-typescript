@@ -64,7 +64,7 @@ module.exports = {
         contentBase: sourcePath,
         hot: true,
         disableHostCheck: true,
-        // remove anoying WDS of React Hot Loader log
+        // remove annoying WDS of React Hot Loader log
         clientLogLevel: 'none',
         stats: {
             warnings: false,
@@ -134,7 +134,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.less$/,
+                test: /\.(less|css)$/,
                 exclude: /\.module.less$/,
                 use: [
                     isProduction ? MiniCssExtractPlugin.loader : "style-loader",
@@ -154,7 +154,7 @@ module.exports = {
                 loader: 'url-loader',
                 query: {
                     limit: 10000,
-                    name: 'images/name=images/[name].[ext]'
+                    name: 'images/[name].[ext]'
                 }
             },
         ],
