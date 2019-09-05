@@ -5,6 +5,6 @@ COPY . develop
 WORKDIR /develop
 
 RUN yarn install
-CMD yarn build && cd ./dist &&  npx local-web-server ./dist -p 3000
+CMD yarn build && cd ./dist &&  npx local-web-server ./dist -p 3000 -z
 
 EXPOSE 3000
