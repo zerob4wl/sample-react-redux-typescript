@@ -26,6 +26,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 
 // postcss config
@@ -52,9 +53,7 @@ const babelLoaderConfig = {
 const tsLoaderConfig = {
     loader: "ts-loader",
     options: {
-        compilerOptions: {
-            module: 'es6'
-        }
+        transpileOnly: true,
     }
 }
 
@@ -211,7 +210,10 @@ module.exports = {
             defaultAttribute: 'defer'
         }),
         new BundleAnalyzerPlugin({analyzerMode: !isAnalysis ? 'disable' : 'server'}),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            tsconfig: path.resolve(__dirname, 'tsconfig.json'),
+        }),
     ],
     resolve: {
         extensions: [".js", ".ts", ".tsx"],
