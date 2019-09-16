@@ -13,8 +13,10 @@
       "es2016",
       "es2017.object"
     ],
-    "target": "es6",
-    "module": "es6",
+    "target": "esnext",
+    "module": "esnext",
+    /* For fork-ts-checker-webpack-plugin to skipLibCheck (ts-loader has this option true by default)*/
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "sourceMap": true
   },
