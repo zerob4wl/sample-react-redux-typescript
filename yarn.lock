@@ -11804,13 +11804,6 @@ storybook-addon-rtl@^0.2.2:
     prop-types "^15.7.2"
     styled-components "^4.1.3"
 
-storybook-react-router@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/storybook-react-router/-/storybook-react-router-1.0.5.tgz#d955526406e5328251fadce4acfe3a6ce432d31e"
-  integrity sha512-br6y5MerG0Al2lz9I3XMTsKNKgzLiVZBX0F9QdlnSAhq9VMfBJtBwiO+qPaptizKOZ3HZaEuYwhil5dQFNmZdw==
-  dependencies:
-    prop-types "^15.7.2"
-
 stream-browserify@^2.0.0, stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"

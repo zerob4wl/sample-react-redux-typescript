@@ -1,6 +1,6 @@
 import { addDecorator, configure, addParameters } from '@storybook/react';
 import { initializeRTL } from 'storybook-addon-rtl';
-import StoryRouter from 'storybook-react-router';
+import centered from "@storybook/addon-centered/react";
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 import './style.less';
@@ -12,7 +12,7 @@ function loadStories() {
 }
 
 initializeRTL();
-addDecorator(StoryRouter());
+addDecorator(centered);
 addParameters({ viewport: { viewports: INITIAL_VIEWPORTS } });
 
 configure(loadStories, module);
