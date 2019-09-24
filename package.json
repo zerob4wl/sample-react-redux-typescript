@@ -14,7 +14,7 @@
     "build": "webpack --define process.env.NODE_ENV=\"production\" -p --progress --colors",
     "fast": "webpack-dev-server -d --devtool source-map --history-api-fallback --progress --colors --port 3000 --host 0.0.0.0",
     "storybook": "start-storybook -p 3001",
-    "storybook:build": "build-storybook"
+    "build:storybook": "build-storybook"
   },
   "dependencies": {
     "babili-webpack-plugin": "^0.1.2",
