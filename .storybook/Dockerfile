@@ -1,6 +1,7 @@
 FROM node:12.4.0-stretch-slim
 
-COPY .. storybook
+# Run it from project root (docker build ./.storybook)
+COPY . storybook
 
 WORKDIR /storybook
 
