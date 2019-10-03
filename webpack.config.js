@@ -24,6 +24,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -211,6 +213,23 @@ module.exports = {
         }),
         new BundleAnalyzerPlugin({analyzerMode: !isAnalysis ? 'disable' : 'server'}),
         new webpack.HotModuleReplacementPlugin(),
+        /* PWA plugin related */
+        new ManifestPlugin({
+            fileName: 'asset-manifest.json',
+        }),
+        new WorkboxWebpackPlugin.GenerateSW({
+            clientsClaim: true,
+            exclude: [/\.map$/, /asset-manifest\.json$/],
+            importWorkboxFrom: 'cdn',
+            navigateFallback: 'src/index.html',
+            navigateFallbackBlacklist: [
+                /* Exclude URLs starting with /_, as they're likely an API call */
+                new RegExp('^/_'),
+                /* Exclude URLs containing a dot, as they're likely a resource in */
+                /* public/ and not a SPA route */
+                new RegExp('/[^/]+\\.[^/]+$'),
+            ],
+        }),
         new ForkTsCheckerWebpackPlugin({
             tsconfig: path.resolve(__dirname, 'tsconfig.json'),
         }),

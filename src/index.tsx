@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import {Provider} from "react-redux";
 import AppContainer from "./containers/app";
 import {store} from "./redux/store";
 import {I18nextProvider} from "react-i18next";
 import i18n from "./translation/i18n";
+import register from "./registerServiceWorker";
 
+/* Register PWA to browser */
+register();
 
 ReactDOM.render(
     <Provider store={store}>
