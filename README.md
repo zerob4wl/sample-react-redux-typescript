@@ -1,7 +1,7 @@
-# Sample Project Based on React, Redux, React-router and Typescript
+# Sample Project Based on React, Redux and Typescript
 [![Build Status](https://travis-ci.org/zerob4wl/sample-react-redux-typescript.svg?branch=master)](https://travis-ci.org/zerob4wl/sample-react-redux-typescript)
 
-This is a sample project and starter based on reactJs, Redux, React-router (v4) and Typescript.
+This is a sample project and starter based on reactJs, Redux, React-router (v5) and Typescript.
 
 see the [Demo](https://zerob4wl.github.io/sample-react-redux-typescript).
 
@@ -52,6 +52,7 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 - [x] [React](https://facebook.github.io/react/)
 - [x] [Redux](https://github.com/reactjs/redux)
 - [x] [React Router](https://github.com/ReactTraining/react-router)
+- [x] [PWA](https://developers.google.com/web/progressive-web-apps)
 - [x] [i18next](https://react.i18next.com)
 - [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 - [x] [Cypress (E2E Test)](https://github.com/cypress-io/cypress)
@@ -59,7 +60,7 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 - [x] [Storybook](https://storybook.js.org)
 
 ## Use boilerplate
-Download tar.gz file or use follow command to start a new project.
+Download `tar.gz` file or use follow command to start a new project.
 ```
 npx degit zerob4wl/sample-react-redux-typescript myNewProject
 ```
