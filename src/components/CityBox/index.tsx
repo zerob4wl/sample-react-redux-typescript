@@ -1,16 +1,16 @@
-import * as React from "react";
+import React from "react";
 
 import {IGetLocationResult, ISearchLocationResult} from "../../lib/api/interfaces";
 import {StringToColor} from "../../lib/color";
 
-import "./style.less";
-import API from "../../lib/api";
 import {connect} from "react-redux";
 import {addFavorites, addLocation, removeFavorites, updateLocation} from "../../redux/geoLocation/actions";
 import {RootState} from "../../redux/reducers";
 import {find} from "lodash";
 import StateIcon from "../StateIcon";
 import BarLoader from "react-spinners/BarLoader";
+import API from "../../lib/api";
+import "./style.less";
 
 interface IProps {
     city: ISearchLocationResult;
@@ -90,7 +90,7 @@ export default class CityBox extends React.Component<IProps, IState> {
 
     render() {
         return (
-            <div className={"city-box"}>
+            <div className="city-box">
                 <h3>{this.props.city.title}</h3>
                 {this.state.locationInfo &&
                 <div>
@@ -100,7 +100,7 @@ export default class CityBox extends React.Component<IProps, IState> {
                     <StateIcon state={this.state.locationInfo.consolidated_weather[0].weather_state_abbr}/>
                 </div>
                 }
-                <div className={"spinner"}>
+                <div className="spinner">
                     <BarLoader
                         color={"#ff6369"}
                         loading={this.state.loading}
@@ -110,12 +110,12 @@ export default class CityBox extends React.Component<IProps, IState> {
                         loading={this.state.reload}
                     />
                 </div>
-                <div className={"control"}>
+                <div className="control">
                     <button onClick={this.toggleFavorites}>
                         {this.state.isFavorite ? "Remove From Favorites" : "Add To Favorites"}
                     </button>
                 </div>
-                <div className={"bg"} style={{backgroundColor: StringToColor(this.props.city.title)}}/>
+                <div className="bg" style={{backgroundColor: StringToColor(this.props.city.title)}}/>
             </div>
         );
     }
