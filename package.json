@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && pretty-quick --staged"
+    }
+  },
   "scripts": {
     "analysis": "webpack -p -a",
     "predeploy": "yarn build --ghpages",
@@ -73,6 +78,7 @@
     "hard-source-webpack-plugin": "^0.13.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.9",
     "i18next": "^17.0.6",
     "i18next-po-loader": "^1.0.0",
     "identity-obj-proxy": "^3.0.0",
@@ -85,6 +91,7 @@
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.18.2",
+    "pretty-quick": "^2.0.0",
     "react-docgen-typescript-loader": "^3.1.0",
     "react-hot-loader": "^4.12.10",
     "react-i18next": "^10.11.4",
