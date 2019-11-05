@@ -57,7 +57,7 @@
     "@types/react-dom": "^16.8.5",
     "@types/react-redux": "^7.1.1",
     "@types/react-router": "^5.0.3",
-    "@types/react-router-dom": "^5.1.0",
+    "@types/react-router-dom": "^5.1.2",
     "@types/redux-actions": "^2.6.1",
     "@types/storybook__react": "^4.0.2",
     "@types/webpack": "4.39.5",
