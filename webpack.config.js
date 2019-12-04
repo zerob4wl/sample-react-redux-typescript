@@ -30,6 +30,7 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 // postcss config
@@ -242,6 +243,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       tsconfig: path.resolve(__dirname, "tsconfig.json"),
     }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
