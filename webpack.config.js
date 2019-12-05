@@ -66,6 +66,7 @@ module.exports = {
   devServer: {
     contentBase: sourcePath,
     hot: true,
+    quiet: true,
     disableHostCheck: true,
     // remove annoying WDS of React Hot Loader log
     clientLogLevel: "none",
