@@ -29,6 +29,7 @@ const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
@@ -222,6 +223,7 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: "defer",
     }),
+    new Dotenv(),
     new BundleAnalyzerPlugin({ analyzerMode: !isAnalysis ? "disable" : "server" }),
     new webpack.HotModuleReplacementPlugin(),
     /* PWA plugin related */
