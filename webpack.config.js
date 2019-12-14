@@ -106,6 +106,10 @@ module.exports = {
       //   loader: 'svg-inline-loader'
       // },
       {
+        test: /\.svg$/,
+        use: ["@svgr/webpack", "url-loader"],
+      },
+      {
         test: /\.module.less$/,
         use: [
           isProduction ? MiniCssExtractPlugin.loader : "style-loader",
