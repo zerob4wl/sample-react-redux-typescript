@@ -221,7 +221,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "!!compile-ejs-loader!src/index.html",
       inject: "head",
     }),
     new ScriptExtHtmlWebpackPlugin({
