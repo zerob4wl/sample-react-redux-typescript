@@ -70,7 +70,7 @@ npx degit zerob4wl/sample-react-redux-typescript myNewProject
 $ yarn install
 ```
 
-## Running
+## Running dev server
 
 ```
 $ yarn start
