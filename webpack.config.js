@@ -223,6 +223,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "!!compile-ejs-loader!src/index.html",
       inject: "head",
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: "defer",
