@@ -1,13 +1,12 @@
-import {createStore, applyMiddleware, Store} from "redux";
-import rootReducer, {RootState} from "./reducers";
-
-declare var window: any;
+import { createStore, applyMiddleware, Store } from "redux";
+import rootReducer, { RootState } from "./reducers";
+import { devToolsEnhancer, composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 
 function logger() {
-    return (next: any) => (action: any) => {
-        console.log(action);
-        return next(action);
-    };
+  return (next: any) => (action: any) => {
+    console.log(action);
+    return next(action);
+  };
 }
 
 /**
@@ -19,27 +18,8 @@ function logger() {
  * @returns {Store}
  */
 export default function configureStore(initialState?: RootState): Store<RootState> {
-    let create;
-    if (typeof window !== "undefined") {
-        if (window.__REDUX_DEVTOOLS_EXTENSION__) {
-            create = window.__REDUX_DEVTOOLS_EXTENSION__()(createStore);
-        }
-    } else {
-        create = createStore;
-    }
-
-    // Add middleware
-    const createStoreWithMiddleware = applyMiddleware(logger)(create);
-
-    // Create store with initial object
-    const store = createStoreWithMiddleware(rootReducer, initialState) as Store<RootState>;
-
-    if (module.hot) {
-        module.hot.accept("./reducers", () => {
-            const nextReducer = require("./reducers");
-            store.replaceReducer(nextReducer);
-        });
-    }
-
-    return store;
+  const composeEnhancers = composeWithDevTools({
+    // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+  });
+  return createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
 }
