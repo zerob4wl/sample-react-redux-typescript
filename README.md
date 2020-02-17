@@ -58,6 +58,7 @@ handle `cors` use https://cors-anywhere.herokuapp.com service.
 - [x] [Cypress (E2E Test)](https://github.com/cypress-io/cypress)
 - [x] [Jest](https://github.com/facebook/jest)
 - [x] [Storybook](https://storybook.js.org)
+- [x] [Prettier](https://prettier.io)
 
 ## Use boilerplate
 Download `tar.gz` file or use follow command to start a new project.
