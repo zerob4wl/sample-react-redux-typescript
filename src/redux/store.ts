@@ -1,7 +1,7 @@
-import {loadState, saveState} from "./localStorage";
+import { loadState, saveState } from "./localStorage";
 import configureStore from "./config";
-import {RootState} from "./reducers";
-import {Store} from "redux";
+import { RootState } from "./reducers";
+import { Store } from "redux";
 
 // Load initial state from local storage if exist
 const initialState: RootState = loadState();
@@ -11,5 +11,5 @@ export const store: Store<RootState> = configureStore(initialState);
 
 // Sync store with local storage
 store.subscribe(() => {
-    saveState(store.getState());
+  saveState(store.getState());
 });
