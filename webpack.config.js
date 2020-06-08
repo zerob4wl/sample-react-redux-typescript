@@ -64,6 +64,7 @@ const tsLoaderConfig = {
 
 module.exports = {
   context: sourcePath,
+  devtool: isProduction ? "source-map" : "eval-cheap-module-source-map",
   devServer: {
     contentBase: sourcePath,
     hot: true,
