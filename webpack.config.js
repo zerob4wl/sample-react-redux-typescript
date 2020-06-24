@@ -231,6 +231,7 @@ module.exports = {
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true,
         useShortDoctype: true,
+        minifyCSS: true,
       },
     }),
     new ScriptExtHtmlWebpackPlugin({
