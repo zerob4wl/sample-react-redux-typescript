@@ -151,7 +151,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(svg|jpe?g|png|eot|ttf|woff2?)$/,
+        test: /\.(svg|jpe?g|png|webp|eot|ttf|woff2?)$/,
         exclude: /node_modules/,
         loader: "url-loader",
         query: {
