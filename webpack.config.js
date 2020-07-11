@@ -202,7 +202,7 @@ module.exports = {
     net: "empty",
   },
   output: {
-    filename: "[name].js",
+    filename: "[name][hash].js",
     chunkFilename: "[name].[chunkhash:4].js",
     path: outPath,
     publicPath: isGHPages ? "./" : "/",
