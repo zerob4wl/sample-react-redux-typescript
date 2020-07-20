@@ -17,7 +17,7 @@
     "start": "webpack-dev-server -d --debug --devtool  source-map  --output-pathinfo --history-api-fallback --progress --colors --port 3000 --host 0.0.0.0",
     "watch": "webpack --progress --watch",
     "build": "webpack --define process.env.NODE_ENV=\"production\" -p --progress --colors",
-    "build:serve": "npx local-web-server -d ./dist --spa index.html  -p 3001 -z --rewrite '/buckets/(.*) -> https://dev.ostadkar.pro/buckets/$1'",
+    "build:serve": "npx local-web-server -d ./dist --spa index.html  -p 3001 -z",
     "build-and-serve": "yarn build && yarn build:serve",
     "fast": "webpack-dev-server -d --devtool source-map --history-api-fallback --progress --colors --port 3000 --host 0.0.0.0",
     "storybook": "start-storybook -p 3001",
