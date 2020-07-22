@@ -2,6 +2,10 @@
   "compilerOptions": {
     "importHelpers": true,
     "noEmitHelpers": true,
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"]
+    },
     "experimentalDecorators": true,
     // we can import module that doesn't have default import - no need for import * as React from 'react
     "allowSyntheticDefaultImports": true,
