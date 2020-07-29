@@ -1,2 +1,2 @@
-# only used for local test of docker
+# only used for local test of docker (not gonna copy node_modules and save time since it will generated with yarn install)
 node_modules
