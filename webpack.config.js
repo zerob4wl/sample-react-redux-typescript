@@ -265,10 +265,7 @@ module.exports = {
     extensions: [".js", ".ts", ".tsx"],
     alias: {
       src: path.resolve(__dirname, "src"),
-    },
-    // Fix webpack"s default behavior to not load packages with jsnext:main module
-    // https://github.com/Microsoft/TypeScript/issues/11677
-    mainFields: ["main"],
+    }
   },
   target: "web",
   // Fix hot Reload and watch on OSX
