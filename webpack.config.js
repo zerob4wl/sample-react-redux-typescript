@@ -22,6 +22,7 @@ new webpack.DefinePlugin({
 // plugins
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PurgecssPlugin = require("purgecss-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
@@ -241,6 +242,9 @@ module.exports = {
     new Dotenv(),
     new BundleAnalyzerPlugin({ analyzerMode: !isAnalysis ? "disable" : "server" }),
     new webpack.HotModuleReplacementPlugin(),
+    new PurgecssPlugin({
+      paths: [path.resolve(sourcePath, "index.html"), ...glob.sync(`${sourcePath}/**/*`, { nodir: true })],
+    }),
     /* PWA plugin related */
     new ManifestPlugin({
       fileName: "asset-manifest.json",

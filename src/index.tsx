@@ -7,6 +7,7 @@ import { store } from "./redux/store";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./translation/i18n";
 import register from "./registerServiceWorker";
+import "./theme/generate.less";
 
 /* Register PWA to browser */
 register();

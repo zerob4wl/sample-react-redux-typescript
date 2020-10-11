@@ -1,0 +1,57 @@
+each(range(1, 5), {
+    .flex-@{value} {
+      flex: @value
+    }
+  })
+  
+  each(range(1, 8), .(@number) {
+    @propertyValue: @number * 0.5rem;
+    .m-@{number} {
+      margin: @propertyValue;
+    }
+    .my-@{number} {
+      margin-top: @propertyValue;
+      margin-bottom: @propertyValue;
+    }
+    .mx-@{number} {
+      margin-right: @propertyValue;
+      margin-left: @propertyValue;
+    }
+    .mt-@{number} {
+      margin-top: @propertyValue;
+    }
+    .mb-@{number} {
+      margin-bottom: @propertyValue;
+    }
+    .ml-@{number} {
+      margin-left: @propertyValue;
+    }
+    .mr-@{number} {
+      margin-right: @propertyValue;
+    }
+  
+  
+    .py-@{number} {
+      padding-top: @propertyValue;
+      padding-bottom: @propertyValue;
+    }
+    .px-@{number} {
+      padding-right: @propertyValue;
+      padding-left: @propertyValue;
+    }
+    .pd-@{number} {
+      padding: @propertyValue;
+    }
+    .pt-@{number} {
+      padding-top: @propertyValue;
+    }
+    .pb-@{number} {
+      padding-bottom: @propertyValue;
+    }
+    .pl-@{number} {
+      padding-left: @propertyValue;
+    }
+    .pr-@{number} {
+      padding-right: @propertyValue;
+    }
+  });

@@ -30,13 +30,13 @@ const SearchContainer: React.FC<ISearchContainerProps> = () => {
       .searchLocation({
         query: value,
       })
-      .then(results => {
+      .then((results) => {
         setLoading(false);
         setResult(results);
       });
   }, 1000);
   return (
-    <div className={"container middle center column"}>
+    <div className={"container middle center column mt-8"}>
       <h1 className={"search-title"}>{t("Search")}</h1>
       <input type="text" placeholder={"Berlin"} className={"search-input"} onChange={searchForLocation} />
       <div className={"search-result container middle center space-between"}>
@@ -44,7 +44,7 @@ const SearchContainer: React.FC<ISearchContainerProps> = () => {
           <CircleLoader color={"#ff6369"} loading={loading} />
           {touch && !loading && results.length === 0 && <h5>{t("There is no result!")}</h5>}
         </div>
-        {results.map(city => (
+        {results.map((city) => (
           <CityBox key={city.woeid} city={city} />
         ))}
       </div>
