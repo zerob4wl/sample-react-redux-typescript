@@ -1,6 +1,7 @@
 const autoprefixer = require("autoprefixer");
 
 const webpack = require("webpack");
+const glob = require("glob");
 const path = require("path");
 
 // variables
@@ -257,7 +258,9 @@ module.exports = {
       ],
     }),
     new ForkTsCheckerWebpackPlugin({
-      tsconfig: path.resolve(__dirname, "tsconfig.json"),
+      typescript: {
+        configFile: path.resolve(__dirname, "tsconfig.json"),
+      },
     }),
     new FriendlyErrorsWebpackPlugin(),
   ],
@@ -265,7 +268,7 @@ module.exports = {
     extensions: [".js", ".ts", ".tsx"],
     alias: {
       src: path.resolve(__dirname, "src"),
-    }
+    },
   },
   target: "web",
   // Fix hot Reload and watch on OSX
