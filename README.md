@@ -1,5 +1,5 @@
 # Sample Project Based on React, Redux and Typescript
-[![Build Status](https://travis-ci.org/zerob4wl/sample-react-redux-typescript.svg?branch=master)](https://travis-ci.org/zerob4wl/sample-react-redux-typescript). ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+[![Build Status](https://travis-ci.org/zerob4wl/sample-react-redux-typescript.svg?branch=master)](https://travis-ci.org/zerob4wl/sample-react-redux-typescript) ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 This is a sample project and starter based on reactJs, Redux, React-router (v5) and Typescript.
 
