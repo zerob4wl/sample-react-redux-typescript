@@ -1,13 +1,14 @@
 // .babelrc
 {
-  "presets": [
-    "@babel/react",
-    ["@babel/env",{ "useBuiltIns": "usage", "corejs": 3}],
-    "@babel/typescript"
-  ],
+  "presets": ["@babel/react", ["@babel/env", { "useBuiltIns": "usage", "corejs": 3 }], "@babel/typescript"],
   "plugins": [
     ["@babel/proposal-decorators", { "legacy": true }],
-    "@babel/proposal-class-properties",
+    [
+      "@babel/proposal-class-properties",
+      {
+        "loose": true /* fix storybook issue */
+      }
+    ],
     "@babel/proposal-object-rest-spread",
     "lodash"
   ]
